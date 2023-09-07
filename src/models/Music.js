@@ -40,3 +40,12 @@ export async function getMusics() {
         return null;
     }
 }
+
+export async function deleteMusic(id) {
+    try {
+        return await Music.destroy({where: {id}});
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(error.message);
+    }
+}

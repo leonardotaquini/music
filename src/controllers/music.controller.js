@@ -1,4 +1,4 @@
-import {createMusic, getMusics} from '../models/Music.js';
+import {createMusic, getMusics, deleteMusic} from '../models/Music.js';
 
 const getAllMusicsCtrl = async(req, res) => {
     const musics = await getMusics();
@@ -13,8 +13,14 @@ const createMusicCtrl = async(req, res) => {
     return res.status(201).json(music);
 }
 
+const deleteMusicCtrl = async(req, res) => {
+    const {id} = req.params;
+    const deletedMusic = await deleteMusic(id);
+    return res.status(200).json({msg:' Music deleted'});
+}
+
 const inicioCtrl = (req, res) => {
     return res.status(200).json({message: 'Welcome to the API'});
 }
 
-export { getAllMusicsCtrl, createMusicCtrl, inicioCtrl };
+export { getAllMusicsCtrl, createMusicCtrl, inicioCtrl, deleteMusicCtrl };
