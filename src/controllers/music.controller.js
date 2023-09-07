@@ -13,4 +13,8 @@ const createMusicCtrl = async(req, res) => {
     return res.status(201).json(music);
 }
 
-export { getAllMusicsCtrl, createMusicCtrl };
+const inicioCtrl = (req, res) => {
+    return res.render('Welcome to Music');
+}
+
+export { getAllMusicsCtrl, createMusicCtrl, inicioCtrl };
